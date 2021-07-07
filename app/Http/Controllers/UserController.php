@@ -16,6 +16,13 @@ class UserController extends Controller
     public function index()
     {
         //
+        // $count = User::all()->count();
+        // $users = User::all();
+        // return view('user.index', compact('users', 'count'));
+
+        $count = User::all()->count();
+        $users = User::paginate(10);
+        return view('user.index', compact('users', 'count'));
     }
 
     /**
@@ -25,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -61,7 +68,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -72,7 +79,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', compact('user'));
     }
 
     /**
